@@ -5,9 +5,9 @@
 	<input type = 'submit' value = 'Idea!'/>
 </form>
 <% @ideas.each do |i| %>
-	<p><a href = '/users/<%= i.user_id %>'><%= i.alias %> says </a></p>
+	<p><a href = '/users/<%= i.user_id %>'><%= i.user.alias %> says </a></p>
 	<fieldset>
-		<p><%= i.content %></p>
+		<p><%= i.conent %></p>
 	</fieldset>
 	<% if i.user_id == session[:user_id] %>
 		<form action = '/ideas/<%= i.id %>' method = 'post'>

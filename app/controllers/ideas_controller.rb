@@ -3,7 +3,8 @@ class IdeasController < ApplicationController
 
 	def index
 		@user = User.find(session[:user_id])
-		@ideas = Idea.joins("LEFT JOIN users ON ideas.user_id = users.id").select("users.alias AS alias, ideas.user_id AS user_id, ideas.conent AS content, ideas.id, ideas.likes_count").order("ideas.likes_count DESC")
+		# @ideas = Idea.joins("LEFT JOIN users ON ideas.user_id = users.id").select("users.alias AS alias, ideas.user_id AS user_id, ideas.conent AS content, ideas.id, ideas.likes_count").order("ideas.likes_count DESC")
+		@ideas = Idea.all.order("ideas.likes_count DESC")
 
 	end
 	def show
