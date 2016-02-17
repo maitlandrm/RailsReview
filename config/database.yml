@@ -87,4 +87,4 @@ production:
   <<: *default
   database: ideas_production
   username: ideas
-  password: <%= ENV['IDEAS_DATABASE_PASSWORD'] %>
+  password: 
