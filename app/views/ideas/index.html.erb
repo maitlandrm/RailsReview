@@ -1,0 +1,28 @@
+<h1>Hi, <%= @user.alias %></h1>
+<form action = '/ideas' method = 'post'>
+	<input type = 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>' />
+	<textarea rows = '2' cols = '50' name = 'idea[conent]' placeholder = 'Post something witty here...'></textarea>
+	<input type = 'submit' value = 'Idea!'/>
+</form>
+<% @ideas.each do |i| %>
+	<p><a href = '/users/<%= i.user_id %>'><%= i.alias %> says </a></p>
+	<fieldset>
+		<p><%= i.content %></p>
+	</fieldset>
+	<% if i.user_id == session[:user_id] %>
+		<form action = '/ideas/<%= i.id %>' method = 'post'>
+			<input type = 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>' />
+			<input type = 'hidden' name = '_method' value = 'delete' />
+			<input type = 'submit' value = 'delete' />
+		</form>
+	<% end %>
+	<p><a href = '/ideas/<%= i.id %>'><%= i.likes_count %> people like this </a></p>
+	<form action = '/like' method = 'post'>
+		<input type = 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>' />
+		<input type = 'hidden' name = 'idea' value = '<%= i.id %>' />
+		<input type = 'submit' value = 'like' />
+	</form>
+
+<% end %>
+
+

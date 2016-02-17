@@ -1,0 +1,54 @@
+<h1>Welocme!</h1>
+
+<fieldset>
+	<legend>Register</legend>
+	<form action = '/users' method = 'post'>
+		<input type = 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>'/>
+		<label>Name</label>
+		<br>
+		<input type = 'text' name = 'user[name]' />
+		<br>
+		<br>
+		<label>Alias</label>
+		<br>
+		<input type = 'text' name = 'user[alias]'/>
+		<br>
+		<br>
+		<label>Email</label>
+		<br>
+		<input type = 'text' name = 'user[email]' />
+		<br>
+		<br>
+		<label>Password</label>
+		<br>
+		<input type = 'password' name = 'user[password]' />
+		<br>
+		<br>
+		<label>Confirm Password</label>
+		<br>
+		<input type = 'password' name = 'user[password_confirmation]' />
+		<br>
+		<br>
+		<input type = 'submit' value = 'Register'/>
+	</form>
+</fieldset>
+<% if flash[:error] %>
+	<p><%= flash[:error] %></p>
+<% end %>
+<fieldset>
+	<legend>Login</legend>
+	<form action = '/sessions' method = 'post'>
+		<input type = 'hidden' name = 'authenticity_token' value = '<%= form_authenticity_token %>'/>
+		<label>Email</label>
+		<br>
+		<input type = 'text' name = 'email' />
+		<br>
+		<br>
+		<label>Password</label>
+		<br>
+		<input type = 'password' name = 'password' />
+		<br>
+		<br>
+		<input type = 'submit' value = 'Login' />
+	</form>
+</fieldset>
